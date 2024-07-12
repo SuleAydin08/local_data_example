@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,15 +8,15 @@ class LoginPage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           //Gradient özelliği eklemek için kullanılan widget
           gradient: LinearGradient(
             begin: Alignment.centerRight,
             end: Alignment.topLeft,
             colors: [
-              const Color.fromARGB(255, 66, 170, 255),
-              Color.fromARGB(255, 67, 201, 199),
-              Color.fromARGB(255, 100, 213, 154),
+              Color.fromARGB(255, 138, 194, 239),
+              Color.fromARGB(255, 250, 163, 192),
+              Color.fromARGB(255, 239, 184, 249),
             ],
           ),
         ),
@@ -29,19 +28,20 @@ class LoginPage extends StatelessWidget {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(46, 255, 255, 255).withOpacity(0.2),
+                    color: const Color.fromARGB(46, 255, 255, 255)
+                        .withOpacity(0.2),
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 35),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 35),
                       child: Text(
-                        "LOG IN",
+                        "Log in",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 30,
                         ),
                       ),
                     ),
@@ -60,13 +60,17 @@ class LoginPage extends StatelessWidget {
                     //Login sayfasının login buttonu
                     Container(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 73, 255, 149),
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(15)),
                       width: 325,
                       height: 45,
-                      child: Center(
-                        child: Text(
-                          "LOG IN",
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/sms_page");
+                        },
+                        child: const Text(
+                          textAlign: TextAlign.center,
+                          "Log in",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -75,12 +79,16 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     //spacer o aralığı ayır demek için kullanırız.
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("No account yet?"),
-                        TextButton(onPressed: () {}, child: Text("Sing Up"))
+                        const Text("Don't have an account ?"),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/sing_up_page");
+                            },
+                            child: const Text("Sing Up"))
                       ],
                     ),
                   ],
